@@ -1,37 +1,35 @@
-{% load static %}
-<meta charset="UTF-8">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% extends 'base.html' %}
 
 
 {% block main %}
-    <div class="container">
-    <h1>Cadastrar No Cliente</h1>
-      <div class="row">
-        <div class="col">
-        </div>
-        <div class="col-6">
-          <form  method="POST">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" >
-              </div>
-              <div class="form-group">
-                <label for="cpf">CPF</label>
-                <input type="text" class="form-control" id="cpf" name="cpf" >
-              </div>
-              <div class="form-group">
-                <label for="endereco">Endereço</label>
-                <input type="text" class="form-control" id="endereco" name="endereco" >
-              </div>
-            <button type="submit" class="btn btn-success"> Salvar</button>
-        </form>
-        </div>
-        <div class="col">
 
-        </div>
-      </div>
+  <div>
+    <div class="content-section">
+        <form method="POST"> {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Cadastrar Cliente</legend>
+                <div class="pure-control-group">
+
+                  <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" >
+                  </div>
+                  <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control" id="cpf" name="cpf" >
+                  </div>
+                  <div class="form-group">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" class="form-control" id="endereco" name="endereco" >
+                  </div>
+
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-success" type="submit">Salvar</button>
+            </div>
+        </form>
     </div>
+  </div>
 
 {% endblock %}
