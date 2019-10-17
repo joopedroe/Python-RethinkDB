@@ -10,6 +10,7 @@ urlpatterns = [
     path('clientes/todos',ExibeClientes, name="exibeClientes" ),
     path('clientes/<str:clienteId>/',EncontraCliente,name='encontraCliente'),
     path('visualizar/', ReadView, name='read'),
-    path('atualizar/<int:id>', UpdateView, name='update'),
-    path('deletar/<int:id>', DeleteView, name='delete'),
+    path('atualizar/', UpdateView, name='update'),
+    path('deletar/', DeleteView, name='delete'),
+    path('new/', NewCharacterView, name='new')
 ]
