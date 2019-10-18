@@ -8,17 +8,30 @@
 {% block main %}
 
 <div class="content-section">
-    <form method="POST"> {% csrf_token %}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Novo Personagem</legend>
-            <div class="pure-control-group">
-                {{ form|crispy }}
-            </div>
-        </fieldset>
-        <div class="form-group">
-            <button class="btn btn-outline-success" type="submit">Criar</button>
+  <form method="POST"> {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Novo Personagem</legend>
+      <div class="pure-control-group">
+
+        <div id="div_tabela_id" class="form-group">
+          <label for="tabela_id" class="col-form-label  requiredField">
+              Tabela<span class="asteriskField">*</span>
+          </label>
+          <div>
+            <select name="tabela" id="tabela_id" class="selectmultiple form-control" required="required">
+              <option value="viloes">Vilões</option>
+              <option value="herois">Heróis</option>
+            </select>
+          </div>
         </div>
-    </form>
+
+        {{ form|crispy }}
+      </div>
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-outline-success" type="submit">Criar</button>
+    </div>
+  </form>
 </div>
 
 {% endblock main %}

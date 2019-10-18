@@ -1,0 +1,23 @@
+{
+    "breadcrumbs.enabled": true,
+    "python.formatting.autopep8Args": [
+        "--aggressive",
+        "--aggressive"
+    ],
+    "python.formatting.provider": "autopep8",
+    "python.jediEnabled": false,
+    "python.linting.pylintEnabled": true,
+    "python.linting.banditArgs": [
+        "--load-plugin",
+        "pylint_django",
+    ],
+    "python.pythonPath": "~/.pyenv/versions/projects3.7/bin/python",
+    "python.autoComplete.extraPaths": [
+        "${workspaceRoot}"
+    ],
+    "python.sortImports.args": [
+        "-ns",
+        "__init__.py"
+    ],
+    "terminal.integrated.shell.linux":null,
+}
