@@ -21,7 +21,7 @@ urlpatterns = [
         name="home"
     ),
     path(
-        'cliente/',
+        'comic/',
         include(
             'Gerencia_ClienteApp.urls',
             namespace='clientes'

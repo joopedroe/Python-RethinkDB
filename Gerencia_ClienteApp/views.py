@@ -9,7 +9,6 @@ from .forms import (
     UpdateForm
 )
 
-
 r = rethinkdb.RethinkDB()
 
 connection = r.connect("localhost", 28015)
@@ -51,11 +50,13 @@ def NewCharacterView(request):
     form = NewCharacterForm
     sucess_url = 'clientes:new'
     template_name = 'Gerencia_ClienteApp/new.html'
+    context = {
+        'form':form
+    }
 
     if request.method == 'POST':
         form = NewCharacterForm(request.POST)
         tabela = request.POST.get('tabela')
-        print(f'Tabela aqui oh: {tabela}')
 
         if form.is_valid():
             dados = form.clean()
@@ -69,52 +70,70 @@ def NewCharacterView(request):
                 "habilidade":f"{dados['habilidade']}",
                 "poder":f"{dados['poder']}"
             }).run(connection)
-            return redirect(sucess_url)
 
+            return redirect(sucess_url)
     else:
         return render(
-            request,
-            template_name,
-            {'form':form}
-        )
+            request,template_name,context)
 
     return render(
-        request,
-        template_name,
-        {'form':form}
-    )
+        request, template_name, context)
 
 def ReadView(request):
-    template_name = 'Gerencia_ClienteApp/read.html'
-    sucess_url = 'clientes:read'
     form = ReadForm
+    sucess_url = 'clientes:read'
+    template_name = 'Gerencia_ClienteApp/read.html'
+    context = {
+        'form':form
+    }
+
+    if request.method == 'GET':
+        search_term = None
+        table = request.GET.get('table', 'viloes')
+
+        if 'search' in request.GET:
+            search_term = request.GET.get('search')
+            resultados = r.db(
+                'universo_dc'
+            ).table(
+                f'{table}'
+            ).filter(
+                {'nome':search_term}
+            ).run(connection)
+
+        else:
+            resultados = r.db(
+                'universo_dc'
+            ).table(
+                f'{table}'
+            ).run(connection)
+
+        context['resultados'] = resultados
+        context['search_term'] = search_term
 
     return render(
-        request,
-        template_name,
-        {'form':form}
-    )
+        request, template_name, context)
 
 def UpdateView(request):
     template_name = 'Gerencia_ClienteApp/update.html'
     sucess_url = 'clientes:update'
     form = UpdateForm
+    context = {
+        'form':form
+    }
 
     return render(
-        request,
-        template_name,
-        {'form':form}
-    )
+        request, template_name, context)
 
 
 def DeleteView(request):
     template_name = 'Gerencia_ClienteApp/delete.html'
     sucess_url = 'clientes:delete'
     form = DeleteForm
+    context = {
+        'form':form
+    }
 
     return render(
-        request,
-        template_name,
-        {'form':form}
-    )
+        request, template_name, context)
 

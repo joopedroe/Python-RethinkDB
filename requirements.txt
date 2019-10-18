@@ -1,1 +1,5 @@
+django
 django-crispy-forms
+pylint
+pytz
+rethinkdb

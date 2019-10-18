@@ -42,7 +42,7 @@ class UpdateForm(forms.Form):
 
 
 class ReadForm(forms.Form):
-    id = forms.CharField(
+    nome = forms.CharField(
         label='Identificador do Personagem', 
         max_length=100,
         required=True
