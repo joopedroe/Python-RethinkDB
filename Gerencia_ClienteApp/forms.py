@@ -14,7 +14,7 @@ class NewCharacterForm(forms.Form):
     poder = forms.IntegerField(
         label='Nível de Poder',
         max_value=8000,
-        required=False
+        required=True
     )
 
 
@@ -22,7 +22,7 @@ class UpdateForm(forms.Form):
     id = forms.CharField(
         label='Identificador do Personagem', 
         max_length=100,
-        required=False
+        required=True
     )
     nome = forms.CharField(max_length=50, required=True)
     xp = forms.IntegerField(
@@ -37,7 +37,7 @@ class UpdateForm(forms.Form):
     poder = forms.IntegerField(
         label='Nível de Poder',
         max_value=8000,
-        required=False
+        required=True
     )
 
 
