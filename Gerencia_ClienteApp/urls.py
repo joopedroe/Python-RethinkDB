@@ -9,8 +9,10 @@ urlpatterns = [
     path('clientes/',ExibeClientesTempoReal, name="exibeClientesTempoReal" ),
     path('clientes/todos',ExibeClientes, name="exibeClientes" ),
     path('clientes/<str:clienteId>/',EncontraCliente,name='encontraCliente'),
-    path('new/', NewCharacterView, name='new'),
+
+    #CRUD
+    path('novo/', NewCharacterView, name='new'),
     path('visualizar/', ReadView, name='read'),
-    path('atualizar/', UpdateView, name='update'),
-    path('deletar/', DeleteView, name='delete'),
+    path('atualizar/<uuid:id>', UpdateView, name='update'),
+    path('deletar/<uuid:id>', DeleteView, name='delete'),
 ]

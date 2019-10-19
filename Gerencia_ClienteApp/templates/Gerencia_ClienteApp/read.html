@@ -42,29 +42,37 @@
 
     </form>
     <div>
+
     {% if resultados %}
-        {% for linha in resultados %}
-        <table class="table table-hover">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">XP</th>
-                    <th scope="col">Habilidade</th>
-                    <th scope="col">Poder</th>
-                </tr>
-                </thead>
-            <tbody>
-                <tr>
-                    <td>{{linha.id}}</td>
-                    <td>{{linha.nome}}</td>
-                    <td>{{linha.xp}}</td>
-                    <td>{{linha.habilidade}}</td>
-                    <td>{{linha.poder}}</td>
-                </tr>
-            </tbody>
-        </table>
-        {% endfor %}
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">XP</th>
+                <th scope="col">Habilidade</th>
+                <th scope="col">Poder</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for linha in resultados %}
+            <tr>
+                <td>{{linha.id}}</td>
+                <td>{{linha.nome}}</td>
+                <td>{{linha.xp}}</td>
+                <td>{{linha.habilidade}}</td>
+                <td>{{linha.poder}}</td>
+                <td>
+                    <div class="btn-group">
+                        <a href="{% url 'clientes:update' linha.id %}" type="button" class="btn btn-primary btn-sm">Atualizar</a>
+                        <a href="{% url 'clientes:delete' linha.id %}" type="button" class="btn btn-primary btn-sm">Deletar</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% endif %}
     </div>
 </div>

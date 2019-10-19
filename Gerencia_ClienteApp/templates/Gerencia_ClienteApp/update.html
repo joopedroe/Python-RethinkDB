@@ -8,11 +8,27 @@
 {% block main %}
 
 <div class="content-section">
-    <form method="POST"> {% csrf_token %}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Atualizar</legend>
+    <form method="POST">
+        <fieldset class="form-group"> {% csrf_token %}
+            <legend class="border-bottom mb-4">
+                Atualizar {% if personagem %}- {{ personagem.nome }} {% endif %}
+            </legend>
+
             <div class="pure-control-group">
-                {{ form|crispy }}
+                <div id="div_tabela_id" class="form-group">
+                    <label for="table_id" class="col-form-label  requiredField">
+                        Tabela
+                    </label>
+                <div>
+                    <select name="table" id="tabela_id" class="selectmultiple form-control" required="required">
+                    <option value="viloes">Vilões</option>
+                    <option value="herois">Heróis</option>
+                    </select>
+                </div>
+            </div>
+
+            {{ form|crispy }}
+
             </div>
         </fieldset>
         <div class="form-group">
